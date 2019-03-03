@@ -1,0 +1,77 @@
+
+<div class="container">
+  <h2>User List</h2>
+  <!-- Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% users.forEach(function(user) { %>
+        <% if(!user.type) { %>
+
+          <tr class="info">
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <% user.docs.forEach(function(doc){ %>
+                <% if(doc.passport){ %> 
+                      <td> <%= doc.passport.filename %></br>
+                        <button class="btn btn-warning" onclick="changeStatus(this, 'passport')" value="<%= user.id %>"> <%= doc.passport.status %> </button>
+                     </td>
+                <%}else{  %>
+                      <td> <%= doc.pancard.filename %> </br>
+                        <button class="btn btn-warning" onclick="changeStatus(this, 'pancard')" value="<%= user.id %>"> <%= doc.pancard.status %></button>
+                      </td>
+                      
+                <% } %>
+            <% }) %>
+          </tr>
+
+        <% } %>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+function changeStatus(elem, docType){
+  var id = elem.value;
+  console.log("id", id);
+  fetch(new Request('/v1/user/update', {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }), {
+      credentials: 'include',
+      body: JSON.stringify({id: id, type: docType})
+    })
+    .then(r => {
+      console.log(r);
+      window.location.reload();
+
+    })
+    .catch(e => console.error)
+
+  // $.ajax({
+  //   type: "PUT",
+  //   url: '/v1/user/update',
+  //   data: {id: id, type: docType},
+  //   dataType: "json",
+  //   contentType: "application/json"
+  //   }, function(success, err){
+  //     if(success){
+  //       console.log("success", success);
+  //     }else{
+  //       console.log("err", err);
+  //     }
+  //   });  
+
+}
+</script>

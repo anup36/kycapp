@@ -19,10 +19,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  '/documents/upload': {view: 'pages/index'},
+  // '/': { view: 'pages/homepage' },
+  '/': {view: 'pages/index'},
+  '/login':{view: 'pages/login'},
+  '/dashboared ': 'UsersController.getAllUsers',
+  'post /v1/users/register': 'UsersController.register',
 
-  'post /v1/documents/register': 'DocumentController.uploadAndRegister'
+  'post /v1/user/superadmin/login': 'UsersController.login',
+
+  'put /v1/user/update': 'UsersController.update',
 
 
 

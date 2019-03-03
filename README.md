@@ -17,6 +17,25 @@ a [Sails v1](https://sailsjs.com) application
 This app was originally generated on Thu Feb 28 2019 13:52:37 GMT+0530 (IST) using Sails v1.1.0.
 
 <!-- Internally, Sails used [`sails-generate@1.16.6`](https://github.com/balderdashy/sails-generate/tree/v1.16.6/lib/core-generators/new). -->
+Steps to Run App:
+
+1. Clone App
+2. npm install
+3. sails lift
+4. open http://localhost:1337/
+
+
+
+For Main Registerion:
+	http://localhost:1337
+
+For Login 
+	http://localhost:1337/login
+	Note: AdminPassword: admin@123
+
+For Dashboard
+	http://localhost:1337/dashboared
+
 
 
 
