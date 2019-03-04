@@ -31,7 +31,7 @@ For Main Registerion:
 
 For Login 
 	http://localhost:1337/login
-	Note: AdminPassword: admin@123
+	Note: AdminPassword: admin@123 && AdminUsername: admin@kyc.com(Please refer your Mongdb user Collection)
 
 For Dashboard
 	http://localhost:1337/dashboared
